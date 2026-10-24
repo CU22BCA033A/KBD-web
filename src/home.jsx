@@ -35,6 +35,12 @@ function FillPhoto({ file, alt, caption, className = "" }) {
   );
 }
 const P = S.photos || {};
+/* Description for a photo: from the gallery list or photos.alts in config.js, else the fallback. */
+function altFor(file, lang, fallback) {
+  const g = (P.gallery || []).find((x) => x && x.file === file);
+  const a = (g && g.alt) || (P.alts || {})[file];
+  return a ? pick(a, lang) : fallback;
+}
 
 const rise = (i) => ({ initial: { opacity: 0, y: 22 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, ease, delay: 0.08 * i } });
 
@@ -122,7 +128,7 @@ function Band() {
 /* ---------- craft ---------- */
 const ROMAN = ["I", "II", "III", "IV"];
 function Craft() {
-  const { t } = useSite();
+  const { t, lang } = useSite();
   return (
     <section className="section craft" id="signature" aria-labelledby="sigTitle">
       <div className={"wrap craft-grid" + (P.signature ? " has-photo" : "")}>
@@ -137,7 +143,7 @@ function Craft() {
             ))}
           </ol>
         </div>
-        <FillPhoto file={P.signature} alt={t("sig.photoAlt")} />
+        <FillPhoto file={P.signature} alt={altFor(P.signature, lang, t("sig.photoAlt"))} />
       </div>
     </section>
   );
@@ -226,7 +232,7 @@ function Menu() {
             <button type="button" className="btn btn-line btn-sm" onClick={clear}>{t("menu.clear")}</button>
           </div>
         )}
-        {groups.length < 2 && <FillPhoto file={P.menuSide} alt={pick({ en: "Khali dosas with palya and chutney", kn: "ಪಲ್ಯ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಖಾಲಿ ದೋಸೆಗಳು" }, lang)} className="menu-side" />}
+        {groups.length < 2 && <FillPhoto file={P.menuSide} alt={altFor(P.menuSide, lang, t("hero.photoAlt"))} className="menu-side" />}
         </div>
         <p className="fine center">{t("menu.note")}{has.cost ? " " + t("fact.cost", { cost: S.costForTwo }) + "." : ""}</p>
       </div>
@@ -236,7 +242,7 @@ function Menu() {
 
 /* ---------- story ---------- */
 function Story() {
-  const { t } = useSite();
+  const { t, lang } = useSite();
   const has2 = P.story || P.storyExtra;
   return (
     <section className="section story" id="story" aria-labelledby="storyTitle">
@@ -256,8 +262,8 @@ function Story() {
         </div>
         {has2 && (
           <div className="fill-col story-side">
-            <FillPhoto file={P.story} alt={t("story.photoAlt")} />
-            <FillPhoto file={P.storyExtra} alt={t("sig.photoAlt")} />
+            <FillPhoto file={P.story} alt={altFor(P.story, lang, t("story.photoAlt"))} />
+            <FillPhoto file={P.storyExtra} alt={altFor(P.storyExtra, lang, t("sig.photoAlt"))} />
           </div>
         )}
       </div>
@@ -309,7 +315,7 @@ function Gallery() {
 /* ---------- catering ---------- */
 const EMPTY = { name: "", date: "", guests: "", place: "", notes: "", consent: false };
 function Catering() {
-  const { t } = useSite();
+  const { t, lang } = useSite();
   const [v, setV] = useState(EMPTY);
   const [errs, setErrs] = useState({});
   const [tried, setTried] = useState(false);
@@ -378,7 +384,7 @@ function Catering() {
           <ol className="process">
             {[1, 2, 3].map((k, i) => <Reveal as="li" key={k} delay={0.08 * i}><span className="process-n" aria-hidden="true">{k}</span><p>{t("cat.p" + k)}</p></Reveal>)}
           </ol>
-          <FillPhoto file={P.catering} alt={t("hero.photoAlt")} className="cat-photo" />
+          <FillPhoto file={P.catering} alt={altFor(P.catering, lang, t("hero.photoAlt"))} className="cat-photo" />
         </div>
         <form ref={form} className="form" onSubmit={submit} noValidate aria-labelledby="formTitle">
           <h3 className="form-h" id="formTitle">{t("cat.form")}</h3>
@@ -504,7 +510,7 @@ function Visit() {
               </dl>
             </div>
             <a className="text-link" href={searchHref(MAIN)} target="_blank" rel="noopener">{t("visit.reviews")}<Icon name="ext" /></a>
-            <FillPhoto file={P.visit} alt={t("story.photoAlt")} caption={t("visit.board")} className="visit-photo" />
+            <FillPhoto file={P.visit} alt={altFor(P.visit, lang, t("story.photoAlt"))} caption={t("visit.board")} className="visit-photo" />
           </div>
           <div className="visit-side">
             <MapBox />
@@ -526,7 +532,7 @@ function Faq() {
       <div className="wrap faq-grid">
         <div className="faq-side">
           <Reveal><Kicker>{t("faq.kicker")}</Kicker><h2 className="h2" id="faqTitle">{t("faq.title")}</h2></Reveal>
-          <FillPhoto file={P.faq} alt={pick({ en: "Folded benne dosa with chutney and white butter", kn: "ಚಟ್ನಿ ಮತ್ತು ಬಿಳಿ ಬೆಣ್ಣೆಯೊಂದಿಗೆ ಮಡಿಸಿದ ಬೆಣ್ಣೆ ದೋಸೆ" }, lang)} className="faq-photo" />
+          <FillPhoto file={P.faq} alt={altFor(P.faq, lang, t("hero.photoAlt"))} className="faq-photo" />
         </div>
         <div className="faq-list">
           {items.map((f, i) => {

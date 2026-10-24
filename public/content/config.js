@@ -59,21 +59,30 @@ window.SITE = {
      A slot with "" is hidden, and the layout adjusts by itself.
      Keep photos under 300 KB: see README, "Adding photos". */
   photos: {
-    heroBackground: "storefront.jpg", // blurred photo behind the hero, under the banner-green tint ("" = plain green)
-    hero: "hero-benne-dosa.jpg",      // the round plate-shaped frame at the top
-    signature: "open-dosa-spiced.jpg", // next to "How a benne dosa is made"
-    story: "storefront.jpg",           // next to "Our story"
-    storyExtra: "khali-dosa-plate.jpg", // second photo under the storefront in "Our story"
-    menuSide: "khali-dosa.jpg",        // tall photo beside the menu card (desktop)
-    catering: "open-dosa.jpg",         // under the catering steps
-    visit: "storefront.jpg",           // "Look for this board" photo in the Visit section
-    faq: "benne-dosa-folded.jpg",      // beside the questions
+    // All photos are shown whole, at their own shape (never cropped).
+    heroBackground: "storefront.jpg",  // blurred photo behind the hero, under the banner-green tint ("" = plain green)
+    hero: "benne-dosa-plate.jpg",      // the round plate-shaped frame at the top
+    signature: "tava-dosas.jpg",       // next to "How a benne dosa is made"
+    story: "open-dosa-spiced.jpg",     // first photo beside "Our story"
+    storyExtra: "khali-dosa.jpg",      // second photo beside "Our story"
+    menuSide: "benne-dosa-folded.jpg", // beside the menu card (desktop)
+    catering: "khali-dosa-plate.jpg",  // under the catering steps
+    visit: "hotel-front.jpg",          // "Look for this board" photo in the Visit section
+    faq: "benne-dosa-plate.jpg",       // beside the questions
     gallery: [
+      { file: "tava-dosas.jpg", alt: { en: "Dosas cooking on the tava with white butter", kn: "ಬಿಳಿ ಬೆಣ್ಣೆಯೊಂದಿಗೆ ಕಾವಲಿಯ ಮೇಲೆ ಬೇಯುತ್ತಿರುವ ದೋಸೆಗಳು" } },
       { file: "open-dosa.jpg", alt: { en: "Open dosa with white butter and chutney on a banana leaf", kn: "ಬಾಳೆಎಲೆಯ ಮೇಲೆ ಬಿಳಿ ಬೆಣ್ಣೆ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಓಪನ್ ದೋಸೆ" } },
       { file: "khali-dosa-plate.jpg", alt: { en: "Khali dosa with coconut chutney and palya on a banana leaf", kn: "ಬಾಳೆಎಲೆಯ ಮೇಲೆ ಕಾಯಿ ಚಟ್ನಿ ಮತ್ತು ಪಲ್ಯದೊಂದಿಗೆ ಖಾಲಿ ದೋಸೆ" } },
       { file: "benne-dosa-folded.jpg", alt: { en: "Folded benne dosa with chutney and white butter", kn: "ಚಟ್ನಿ ಮತ್ತು ಬಿಳಿ ಬೆಣ್ಣೆಯೊಂದಿಗೆ ಮಡಿಸಿದ ಬೆಣ್ಣೆ ದೋಸೆ" } },
-      { file: "khali-dosa.jpg", alt: { en: "Khali dosas with palya and chutney", kn: "ಪಲ್ಯ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಖಾಲಿ ದೋಸೆಗಳು" } }
-    ]
+      { file: "khali-dosa.jpg", alt: { en: "Khali dosas with palya and chutney", kn: "ಪಲ್ಯ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಖಾಲಿ ದೋಸೆಗಳು" } },
+      { file: "benne-dosa-plates.jpg", alt: { en: "Three plates of benne dosa with chutney on banana leaves", kn: "ಬಾಳೆಎಲೆಗಳ ಮೇಲೆ ಚಟ್ನಿಯೊಂದಿಗೆ ಮೂರು ತಟ್ಟೆ ಬೆಣ್ಣೆ ದೋಸೆ" } }
+    ],
+    // Descriptions for photos that are not in the gallery (read by screen readers and Google).
+    alts: {
+      "hotel-front.jpg": { en: "Front of Sri Guru Kottureshwara Butter Dosa Hotel with its green name board", kn: "ಹಸಿರು ನಾಮಫಲಕದೊಂದಿಗೆ ಶ್ರೀ ಗುರು ಕೊಟ್ಟೂರೇಶ್ವರ ಬೆಣ್ಣೆ ದೋಸೆ ಹೋಟೆಲ್‌ನ ಮುಂಭಾಗ" },
+      "benne-dosa-plate.jpg": { en: "Benne dosa with white butter and chutney on a banana leaf plate", kn: "ಬಾಳೆಎಲೆ ತಟ್ಟೆಯಲ್ಲಿ ಬಿಳಿ ಬೆಣ್ಣೆ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಬೆಣ್ಣೆ ದೋಸೆ" },
+      "open-dosa-spiced.jpg": { en: "Open dosa with spice powder, white butter, palya and chutney", kn: "ಖಾರದ ಪುಡಿ, ಬಿಳಿ ಬೆಣ್ಣೆ, ಪಲ್ಯ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಓಪನ್ ದೋಸೆ" }
+    }
   },
   // Set this only if you use photos you did not take (it is shown in the footer).
   photoCredit: "",

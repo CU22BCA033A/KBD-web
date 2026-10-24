@@ -39,20 +39,23 @@ If the site deploys from GitHub, just commit the change. If you upload by hand, 
 first, or make the same edit in `dist/content/` and upload `dist`.
 
 ### Photos
-All photos are in `public/assets/photos/`:
+All photos are in `public/assets/photos/` and are always shown whole, at their own shape (never cropped).
+The only exceptions are the blurred background behind the hero and the round frame at the top.
 
-| File | Where it appears |
-|---|---|
-| `hero-benne-dosa.jpg` | Round plate frame at the top of the home page |
-| `open-dosa-spiced.jpg` | Next to "How a benne dosa is made" |
-| `storefront.jpg` | Next to "Our story" |
-| `benne-dosa-folded.jpg`, `open-dosa.jpg`, `khali-dosa-plate.jpg` | Menu photos for Benne, Open and Khali Dosa |
-| `open-dosa.jpg`, `khali-dosa-plate.jpg`, `benne-dosa-folded.jpg`, `khali-dosa.jpg` | Gallery (click to enlarge) |
-| `khali-dosa-plate.jpg`, `khali-dosa.jpg`, `open-dosa.jpg`, `storefront.jpg`, `benne-dosa-folded.jpg` | Side photos in Our story, Menu, Catering, Visit and FAQ (`storyExtra`, `menuSide`, `catering`, `visit`, `faq` in `config.js`). They stretch to match the content beside them, so there are no empty gaps. |
+| Setting in `config.js` | Photo | Where it appears |
+|---|---|---|
+| `heroBackground` | `storefront.jpg` | Blurred behind the hero, under the green tint |
+| `hero` | `benne-dosa-plate.jpg` | Round plate frame at the top |
+| `signature` | `tava-dosas.jpg` | Next to "How a benne dosa is made" |
+| `story`, `storyExtra` | `open-dosa-spiced.jpg`, `khali-dosa.jpg` | Beside "Our story" |
+| `menuSide` | `benne-dosa-folded.jpg` | Beside the menu card (desktop) |
+| `catering` | `khali-dosa-plate.jpg` | Under the catering steps |
+| `visit` | `hotel-front.jpg` | "Look for this board" in Visit |
+| `faq` | `benne-dosa-plate.jpg` | Beside the questions |
+| `gallery` | seven photos | Gallery (click to enlarge) |
 
-Replace a file with a new photo of the same name and it updates everywhere. To change which photo goes
-where, edit `photos` in `public/content/config.js` and `photo` in `public/content/menu.js`.
-`tools/compress_photos.py` shrinks photos for the web.
+Menu photos are set with `photo` in `menu.js`. Replace a file with a new photo of the same name and it
+updates everywhere. `tools/compress_photos.py` shrinks photos for the web.
 
 ## Developers
 ```
