@@ -203,15 +203,15 @@ html[lang="kn"] .hero h1 { font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4.2rem); lin
 .hero-text { margin-top: 1.6rem; font-size: clamp(1.08rem, 1rem + .4vw, 1.3rem); color: var(--teal-soft); max-width: 50ch; }
 .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.25rem; }
 .hero-art { display: flex; justify-content: center; }
-.arch { position: relative; width: min(100%, 420px); aspect-ratio: 4 / 5; border: 1px solid var(--dk-rule); border-radius: 999px 999px 0 0; padding: 14px; }
-.arch::before { content: ""; position: absolute; inset: 14px; border: 1px solid var(--yellow); border-radius: 999px 999px 0 0; pointer-events: none; z-index: 1; }
-.arch-photo { position: absolute; inset: 14px; border-radius: 999px 999px 0 0; }
-.plate { position: absolute; inset: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2rem; text-align: center; border-radius: 999px 999px 0 0; }
+.arch { position: relative; width: min(100%, 460px); aspect-ratio: 1; border: 1px solid var(--dk-rule); border-radius: 50%; padding: 14px; }
+.arch::before { content: ""; position: absolute; inset: 14px; border: 3px solid var(--yellow); border-radius: 50%; pointer-events: none; z-index: 1; }
+.arch-photo { position: absolute; inset: 14px; border-radius: 50%; }
+.plate { position: absolute; inset: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2rem; text-align: center; border-radius: 50%; }
 .plate-leaf { width: 110px; height: 55px; color: var(--yellow); }
 .plate-kn { font-family: "Noto Serif Kannada", serif; font-weight: 700; font-size: clamp(3rem, 2rem + 4vw, 4.8rem); line-height: 1.2; color: var(--dk-text); }
 .plate-line { font-size: .8rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--yellow); padding-top: .6rem; border-top: 1px solid var(--dk-rule); }
 html[lang="kn"] .plate-line { letter-spacing: .06em; font-size: .95rem; }
-@media (max-width: 899px) { .arch { width: min(78vw, 340px); } }
+@media (max-width: 899px) { .arch { width: min(82vw, 360px); } }
 @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.15fr .85fr; } }
 
 /* ---------- info band ---------- */
@@ -307,13 +307,15 @@ html[lang="kn"] .year { font-style: normal; font-size: 1.7rem; }
 }
 
 /* gallery */
-.gal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 1rem; margin-top: 2.5rem; }
+.gal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(.5rem, 1.5vw, 1rem); margin-top: 2.5rem; }
+@media (min-width: 900px) { .gal-grid { grid-template-columns: repeat(4, 1fr); } }
 .gal-btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
 .gal-btn .photo { aspect-ratio: 4 / 3; }
 .gal-btn:hover img { opacity: .9; }
 .lightbox { width: min(94vw, 1100px); max-height: 92vh; padding: 0; border: 1px solid var(--rule); background: var(--bg); color: var(--text); overflow: hidden; }
 .lightbox::backdrop { background: rgba(10, 16, 12, .86); }
-.lightbox img { width: 100%; max-height: 80vh; object-fit: contain; background: #0A0F0C; }
+.lightbox img { display: block; width: auto; max-width: 100%; max-height: 80vh; margin: 0 auto; object-fit: contain; }
+.lightbox figure { background: #0A0F0C; }
 .lightbox figcaption { padding: 1rem 1.25rem; color: var(--soft); }
 .lightbox-x { position: absolute; top: 10px; right: 10px; background: var(--bg); }
 

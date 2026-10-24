@@ -39,9 +39,18 @@ If the site deploys from GitHub, just commit the change. If you upload by hand, 
 first, or make the same edit in `dist/content/` and upload `dist`.
 
 ### Photos
-Photos live in `public/assets/photos/`: `benne-dosa.jpg`, `open-dosa.jpg`, `khali-dosa.jpg`,
-`storefront.jpg`. Replace a file with a sharper photo of the same name and it updates everywhere.
-To add more, put the file there and write its name in `config.js` (for example in `gallery`).
+All photos are in `public/assets/photos/`:
+
+| File | Where it appears |
+|---|---|
+| `hero-benne-dosa.jpg` | Round plate frame at the top of the home page |
+| `open-dosa-spiced.jpg` | Next to "How a benne dosa is made" |
+| `storefront.jpg` | Next to "Our story" |
+| `benne-dosa-folded.jpg`, `open-dosa.jpg`, `khali-dosa-plate.jpg` | Menu photos for Benne, Open and Khali Dosa |
+| `open-dosa.jpg`, `khali-dosa-plate.jpg`, `benne-dosa-folded.jpg`, `khali-dosa.jpg` | Gallery (click to enlarge) |
+
+Replace a file with a new photo of the same name and it updates everywhere. To change which photo goes
+where, edit `photos` in `public/content/config.js` and `photo` in `public/content/menu.js`.
 `tools/compress_photos.py` shrinks photos for the web.
 
 ## Developers

@@ -60,12 +60,14 @@ window.SITE = {
      Keep photos under 300 KB: see README, "Adding photos". */
   photos: {
     heroBackground: "", // optional photo behind the headline, under a tint ("" = none)
-    hero: "open-dosa.jpg",            // inside the arch
-    signature: "khali-dosa.jpg",      // next to "How a benne dosa is made"
-    story: "storefront.jpg",          // next to "Our story"
+    hero: "hero-benne-dosa.jpg",      // the round plate-shaped frame at the top
+    signature: "open-dosa-spiced.jpg", // next to "How a benne dosa is made"
+    story: "storefront.jpg",           // next to "Our story"
     gallery: [
-      // Add more real photos here when available, e.g.
-      // { file: "gallery-01.jpg", alt: { en: "The wood fire under the tava", kn: "ಕಾವಲಿಯ ಕೆಳಗಿನ ಸೌದೆ ಬೆಂಕಿ" } },
+      { file: "open-dosa.jpg", alt: { en: "Open dosa with white butter and chutney on a banana leaf", kn: "ಬಾಳೆಎಲೆಯ ಮೇಲೆ ಬಿಳಿ ಬೆಣ್ಣೆ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಓಪನ್ ದೋಸೆ" } },
+      { file: "khali-dosa-plate.jpg", alt: { en: "Khali dosa with coconut chutney and palya on a banana leaf", kn: "ಬಾಳೆಎಲೆಯ ಮೇಲೆ ಕಾಯಿ ಚಟ್ನಿ ಮತ್ತು ಪಲ್ಯದೊಂದಿಗೆ ಖಾಲಿ ದೋಸೆ" } },
+      { file: "benne-dosa-folded.jpg", alt: { en: "Folded benne dosa with chutney and white butter", kn: "ಚಟ್ನಿ ಮತ್ತು ಬಿಳಿ ಬೆಣ್ಣೆಯೊಂದಿಗೆ ಮಡಿಸಿದ ಬೆಣ್ಣೆ ದೋಸೆ" } },
+      { file: "khali-dosa.jpg", alt: { en: "Khali dosas with palya and chutney", kn: "ಪಲ್ಯ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಖಾಲಿ ದೋಸೆಗಳು" } }
     ]
   },
   // Set this only if you use photos you did not take (it is shown in the footer).
