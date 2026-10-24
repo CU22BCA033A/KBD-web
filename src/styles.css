@@ -195,15 +195,15 @@ html[lang="kn"] .nav a { letter-spacing: .02em; text-transform: none; font-size:
 .hero-bg { position: absolute; inset: 0; z-index: -1; background: var(--dk); }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(3px); transform: scale(1.06); transition: opacity .8s ease; }
 .hero-bg img.is-loaded { opacity: 1; }
-.hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(13, 46, 24, .8); }
-[data-theme="dark"] .hero-bg::after { background: rgba(8, 30, 15, .9); }
+.hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(3, 90, 79, .82); }
+[data-theme="dark"] .hero-bg::after { background: rgba(2, 62, 54, .88); }
 .hero-grid { display: grid; gap: clamp(3rem, 6vw, 5rem); align-items: center; }
 .hero h1 { font-size: clamp(2.6rem, 1.5rem + 4.6vw, 5.4rem); line-height: 1.03; max-width: 14ch; color: var(--dk-text); }
 html[lang="kn"] .hero h1 { font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4.2rem); line-height: 1.32; }
 .hero-text { margin-top: 1.6rem; font-size: clamp(1.08rem, 1rem + .4vw, 1.3rem); color: var(--teal-soft); max-width: 50ch; }
 .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.25rem; }
 .hero-art { display: flex; justify-content: center; }
-.arch { position: relative; width: min(100%, 460px); aspect-ratio: 1; border: 1px solid var(--dk-rule); border-radius: 50%; padding: 14px; }
+.arch { position: relative; width: min(100%, 580px); aspect-ratio: 1; border: 1px solid var(--dk-rule); border-radius: 50%; padding: 14px; }
 .arch::before { content: ""; position: absolute; inset: 14px; border: 3px solid var(--yellow); border-radius: 50%; pointer-events: none; z-index: 1; }
 .arch-photo { position: absolute; inset: 14px; border-radius: 50%; }
 .plate { position: absolute; inset: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2rem; text-align: center; border-radius: 50%; }
@@ -211,8 +211,8 @@ html[lang="kn"] .hero h1 { font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4.2rem); lin
 .plate-kn { font-family: "Noto Serif Kannada", serif; font-weight: 700; font-size: clamp(3rem, 2rem + 4vw, 4.8rem); line-height: 1.2; color: var(--dk-text); }
 .plate-line { font-size: .8rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--yellow); padding-top: .6rem; border-top: 1px solid var(--dk-rule); }
 html[lang="kn"] .plate-line { letter-spacing: .06em; font-size: .95rem; }
-@media (max-width: 899px) { .arch { width: min(82vw, 360px); } }
-@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.15fr .85fr; } }
+@media (max-width: 899px) { .arch { width: min(90vw, 440px); } }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1fr 1fr; } }
 
 /* ---------- info band ---------- */
 .band { background: var(--bg-alt); border-bottom: 1px solid var(--rule); }

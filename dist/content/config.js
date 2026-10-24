@@ -59,7 +59,7 @@ window.SITE = {
      A slot with "" is hidden, and the layout adjusts by itself.
      Keep photos under 300 KB: see README, "Adding photos". */
   photos: {
-    heroBackground: "", // optional photo behind the headline, under a tint ("" = none)
+    heroBackground: "storefront.jpg", // blurred photo behind the hero, under the banner-green tint ("" = plain green)
     hero: "hero-benne-dosa.jpg",      // the round plate-shaped frame at the top
     signature: "open-dosa-spiced.jpg", // next to "How a benne dosa is made"
     story: "storefront.jpg",           // next to "Our story"
