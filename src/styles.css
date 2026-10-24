@@ -274,14 +274,14 @@ html[lang="kn"] .tab { letter-spacing: .02em; text-transform: none; font-size: .
 .menu-layout { margin-top: 2.75rem; display: grid; gap: 2rem; }
 .menu-side { display: none; }
 @media (min-width: 960px) { .menu-layout.has-side { grid-template-columns: 1.45fr .55fr; align-items: center; } .menu-side { display: flex; } }
-.menu-layout:not(.has-side) .board-1 { max-width: 880px; margin-inline: auto; width: 100%; }
+.menu-layout:not(.has-side) .board-1 { width: 100%; }
 @media (min-width: 900px) { .board-2 { grid-template-columns: 1fr 1fr; gap: 0; } .board-2 .board-col:first-child { padding-right: 3rem; border-right: 1px solid var(--rule); } .board-2 .board-col:last-child { padding-left: 3rem; } }
 .board-h { margin-bottom: 1.25rem; font-family: var(--f-head); font-style: italic; font-weight: 500; font-size: 1.6rem; color: var(--kicker); text-align: center; }
 html[lang="kn"] .board-h { font-style: normal; }
 .dishes { display: grid; }
 .dish { display: grid; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px dotted var(--rule); }
 .dish:last-child { border-bottom: 0; }
-.dish.has-photo { grid-template-columns: clamp(88px, 22vw, 132px) 1fr; gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+.dish.has-photo { grid-template-columns: clamp(88px, 18vw, 190px) 1fr; gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
 .dish-photo { width: 100%; }
 .dish-photo:not(.is-loaded) { min-height: 90px; }
 .board-1 .dish { padding: 1.6rem 0; }

@@ -65,7 +65,7 @@ window.SITE = {
     signature: "tava-dosas.jpg",       // next to "How a benne dosa is made"
     story: "open-dosa-spiced.jpg",     // first photo beside "Our story"
     storyExtra: "khali-dosa.jpg",      // second photo beside "Our story"
-    menuSide: "benne-dosa-folded.jpg", // beside the menu card (desktop)
+    menuSide: "",                      // optional photo beside the menu card on desktop ("" = none)
     catering: "khali-dosa-plate.jpg",  // under the catering steps
     visit: "hotel-front.jpg",          // "Look for this board" photo in the Visit section
     faq: "benne-dosa-plate.jpg",       // beside the questions

@@ -48,7 +48,7 @@ The only exceptions are the blurred background behind the hero and the round fra
 | `hero` | `benne-dosa-plate.jpg` | Round plate frame at the top |
 | `signature` | `tava-dosas.jpg` | Next to "How a benne dosa is made" |
 | `story`, `storyExtra` | `open-dosa-spiced.jpg`, `khali-dosa.jpg` | Beside "Our story" |
-| `menuSide` | `benne-dosa-folded.jpg` | Beside the menu card (desktop) |
+| `menuSide` | (none) | Optional photo beside the menu card (desktop) |
 | `catering` | `khali-dosa-plate.jpg` | Under the catering steps |
 | `visit` | `hotel-front.jpg` | "Look for this board" in Visit |
 | `faq` | `benne-dosa-plate.jpg` | Beside the questions |
