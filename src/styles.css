@@ -282,8 +282,10 @@ html[lang="kn"] .board-h { font-style: normal; }
 .dish { display: grid; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px dotted var(--rule); }
 .dish:last-child { border-bottom: 0; }
 .dish.has-photo { grid-template-columns: clamp(88px, 18vw, 190px) 1fr; gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
-.dish-photo { width: 100%; }
-.dish-photo:not(.is-loaded) { min-height: 90px; }
+/* menu photos: all the same square, centred */
+.dish-photo { width: 100%; aspect-ratio: 1; }
+.dish-photo img { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: center; }
+.dish-photo:not(.is-loaded) { min-height: 0; }
 .board-1 .dish { padding: 1.6rem 0; }
 .dish-body { min-width: 0; }
 .dish-top { display: flex; align-items: baseline; gap: .6rem; }

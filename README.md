@@ -54,7 +54,7 @@ The only exceptions are the blurred background behind the hero and the round fra
 | `faq` | `benne-dosa-plate.jpg` | Beside the questions |
 | `gallery` | seven photos | Gallery (click to enlarge) |
 
-Menu photos are set with `photo` in `menu.js`. Replace a file with a new photo of the same name and it
+Menu photos are set with `photo` in `menu.js`; they are shown as matching squares, centred. Replace a file with a new photo of the same name and it
 updates everywhere. `tools/compress_photos.py` shrinks photos for the web.
 
 ## Developers
