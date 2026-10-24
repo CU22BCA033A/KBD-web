@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# After connecting your domain, replace https://www.example.com with it (see README).
+Sitemap: https://www.example.com/sitemap.xml

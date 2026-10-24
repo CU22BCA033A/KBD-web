@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- After connecting your domain, replace https://www.example.com with it (see README). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.example.com/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://www.example.com/privacy.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://www.example.com/terms.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://www.example.com/refund.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://www.example.com/cookies.html</loc><lastmod>2026-10-24</lastmod></url>
+</urlset>
