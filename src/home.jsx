@@ -39,17 +39,15 @@ function Hero() {
           <img src={photoSrc(bgFile)} alt="" decoding="async" fetchpriority="high" className={bg === "loaded" ? "is-loaded" : ""} onLoad={() => setBg("loaded")} onError={() => setBg("failed")} />
         </div>
       )}
-      <div className="wrap">
-        <m.figure className="hero-banner" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease }}>
-          <img
-            src="assets/brand/banner-1200.webp"
-            srcSet="assets/brand/banner-720.webp 720w, assets/brand/banner-1200.webp 1200w, assets/brand/banner.webp 2172w"
-            sizes="(min-width: 1240px) 1192px, calc(100vw - 2 * var(--gutter))"
-            width="2172" height="436" fetchpriority="high" decoding="async"
-            alt={t("banner.alt")}
-          />
-        </m.figure>
-      </div>
+      <m.figure className="hero-banner" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, ease }}>
+        <img
+          src="assets/brand/banner-1600.webp"
+          srcSet="assets/brand/banner-720.webp 720w, assets/brand/banner-1200.webp 1200w, assets/brand/banner-1600.webp 1600w, assets/brand/banner.webp 2167w"
+          sizes="100vw"
+          width="2167" height="431" fetchpriority="high" decoding="async"
+          alt={t("banner.alt")}
+        />
+      </m.figure>
       <div className="wrap hero-grid">
         <div className="hero-copy">
           <m.p className="kicker kicker-light" {...rise(0)}>{t("hero.kicker")}</m.p>

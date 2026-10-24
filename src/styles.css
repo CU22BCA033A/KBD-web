@@ -34,7 +34,7 @@
   --ok: #1E6B34;
 
   --dk: #123F21;
-  --teal: #035548;        /* taken from the hotel name board */
+  --teal: #035A4F;        /* the exact edge colour of the hotel name board */
   --teal-soft: #CFE3DA;
   --dk-text: #F6F0DC;
   --dk-soft: #CAD5C3;
@@ -188,10 +188,9 @@ html[lang="kn"] .nav a { letter-spacing: .02em; text-transform: none; font-size:
 @media (max-width: 400px) { .brand-mark { width: 38px; height: 38px; } .brand-name { font-size: .98rem; } .brand-sub { font-size: .58rem; letter-spacing: .1em; } }
 
 /* ---------- hero ---------- */
-.hero { background: var(--teal); color: var(--dk-text); padding-block: clamp(14px, 2vw, 28px) clamp(3.5rem, 2rem + 5vw, 6.5rem); border-bottom: 1px solid var(--dk-rule); }
-.hero-banner { margin: 0 0 clamp(2rem, 1.25rem + 2.6vw, 3.5rem); }
-.hero-banner img { display: block; width: 100%; height: auto; aspect-ratio: 2172 / 436; border: 1px solid rgba(246, 240, 220, .25); background: #015A4B; }
-@media (max-width: 599px) { .hero-banner { margin-inline: calc(-1 * var(--gutter) + 6px); } }
+.hero { background: var(--teal); color: var(--dk-text); border-top: 0; padding-block: 0 clamp(3.5rem, 2rem + 5vw, 6.5rem); border-bottom: 1px solid var(--dk-rule); }
+.hero-banner { margin: 0 0 clamp(2rem, 1.25rem + 2.6vw, 3.5rem); background: var(--teal); }
+.hero-banner img { display: block; width: 100%; height: auto; aspect-ratio: 2167 / 431; }
 .hero { position: relative; isolation: isolate; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; z-index: -1; background: var(--dk); }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(3px); transform: scale(1.06); transition: opacity .8s ease; }
