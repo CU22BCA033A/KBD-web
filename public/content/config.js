@@ -63,6 +63,11 @@ window.SITE = {
     hero: "hero-benne-dosa.jpg",      // the round plate-shaped frame at the top
     signature: "open-dosa-spiced.jpg", // next to "How a benne dosa is made"
     story: "storefront.jpg",           // next to "Our story"
+    storyExtra: "khali-dosa-plate.jpg", // second photo under the storefront in "Our story"
+    menuSide: "khali-dosa.jpg",        // tall photo beside the menu card (desktop)
+    catering: "open-dosa.jpg",         // under the catering steps
+    visit: "storefront.jpg",           // "Look for this board" photo in the Visit section
+    faq: "benne-dosa-folded.jpg",      // beside the questions
     gallery: [
       { file: "open-dosa.jpg", alt: { en: "Open dosa with white butter and chutney on a banana leaf", kn: "ಬಾಳೆಎಲೆಯ ಮೇಲೆ ಬಿಳಿ ಬೆಣ್ಣೆ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಓಪನ್ ದೋಸೆ" } },
       { file: "khali-dosa-plate.jpg", alt: { en: "Khali dosa with coconut chutney and palya on a banana leaf", kn: "ಬಾಳೆಎಲೆಯ ಮೇಲೆ ಕಾಯಿ ಚಟ್ನಿ ಮತ್ತು ಪಲ್ಯದೊಂದಿಗೆ ಖಾಲಿ ದೋಸೆ" } },

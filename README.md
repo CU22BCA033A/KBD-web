@@ -48,6 +48,7 @@ All photos are in `public/assets/photos/`:
 | `storefront.jpg` | Next to "Our story" |
 | `benne-dosa-folded.jpg`, `open-dosa.jpg`, `khali-dosa-plate.jpg` | Menu photos for Benne, Open and Khali Dosa |
 | `open-dosa.jpg`, `khali-dosa-plate.jpg`, `benne-dosa-folded.jpg`, `khali-dosa.jpg` | Gallery (click to enlarge) |
+| `khali-dosa-plate.jpg`, `khali-dosa.jpg`, `open-dosa.jpg`, `storefront.jpg`, `benne-dosa-folded.jpg` | Side photos in Our story, Menu, Catering, Visit and FAQ (`storyExtra`, `menuSide`, `catering`, `visit`, `faq` in `config.js`). They stretch to match the content beside them, so there are no empty gaps. |
 
 Replace a file with a new photo of the same name and it updates everywhere. To change which photo goes
 where, edit `photos` in `public/content/config.js` and `photo` in `public/content/menu.js`.

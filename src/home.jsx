@@ -23,6 +23,19 @@ function CopyButton({ text, label }) {
   );
 }
 
+/* A photo that stretches to fill the empty space beside taller content (desktop). */
+function FillPhoto({ file, alt, caption, className = "" }) {
+  const [fail, setFail] = useState(false);
+  if (!file || fail) return null;
+  return (
+    <div className={"fill-col " + className}>
+      <Photo file={file} alt={alt} className="fill-photo" onFail={() => setFail(true)} />
+      {caption && <p className="fill-cap">{caption}</p>}
+    </div>
+  );
+}
+const P = S.photos || {};
+
 const rise = (i) => ({ initial: { opacity: 0, y: 22 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, ease, delay: 0.08 * i } });
 
 /* ---------- hero ---------- */
@@ -42,9 +55,9 @@ function Hero() {
       <m.figure className="hero-banner" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, ease }}>
         <img
           src="assets/brand/banner-1600.webp"
-          srcSet="assets/brand/banner-720.webp 720w, assets/brand/banner-1200.webp 1200w, assets/brand/banner-1600.webp 1600w, assets/brand/banner.webp 2167w"
+          srcSet="assets/brand/banner-720.webp 720w, assets/brand/banner-1200.webp 1200w, assets/brand/banner-1600.webp 1600w, assets/brand/banner.webp 2172w"
           sizes="100vw"
-          width="2167" height="431" fetchpriority="high" decoding="async"
+          width="2172" height="371" fetchpriority="high" decoding="async"
           alt={t("banner.alt")}
         />
       </m.figure>
@@ -110,23 +123,21 @@ function Band() {
 const ROMAN = ["I", "II", "III", "IV"];
 function Craft() {
   const { t } = useSite();
-  const [fail, setFail] = useState(false);
-  const photo = S.photos && S.photos.signature && !fail;
   return (
     <section className="section craft" id="signature" aria-labelledby="sigTitle">
-      <div className={"wrap craft-grid" + (photo ? " has-photo" : "")}>
-        <div className="craft-head">
+      <div className={"wrap craft-grid" + (P.signature ? " has-photo" : "")}>
+        <div className="craft-main">
           <Reveal><Kicker>{t("sig.kicker")}</Kicker><h2 className="h2" id="sigTitle">{t("sig.title")}</h2><p className="lead">{t("sig.text")}</p></Reveal>
-          {photo && <Reveal delay={0.1}><Photo file={S.photos.signature} alt={t("sig.photoAlt")} className="craft-photo" onFail={() => setFail(true)} /></Reveal>}
+          <ol className="craft-list">
+            {[1, 2, 3, 4].map((n, i) => (
+              <Reveal as="li" key={n} delay={0.06 * i}>
+                <span className="craft-n" aria-hidden="true">{ROMAN[i]}</span>
+                <div><h3>{t(`sig.${n}.t`)}</h3><p>{t(`sig.${n}.d`)}</p></div>
+              </Reveal>
+            ))}
+          </ol>
         </div>
-        <ol className="craft-list">
-          {[1, 2, 3, 4].map((n, i) => (
-            <Reveal as="li" key={n} delay={0.06 * i}>
-              <span className="craft-n" aria-hidden="true">{ROMAN[i]}</span>
-              <div><h3>{t(`sig.${n}.t`)}</h3><p>{t(`sig.${n}.d`)}</p></div>
-            </Reveal>
-          ))}
-        </ol>
+        <FillPhoto file={P.signature} alt={t("sig.photoAlt")} />
       </div>
     </section>
   );
@@ -197,6 +208,7 @@ function Menu() {
           </div>
         </div>}
         <p className="visually-hidden" aria-live="polite">{t("menu.count", { n: shown.length })}</p>
+        <div className={"menu-layout" + (P.menuSide && groups.length < 2 ? " has-side" : "")}>
         {shown.length ? (
           <div className={"board" + (groups.length > 1 ? " board-2" : " board-1")}>
             {groups.map(([k, label, items]) => (
@@ -214,6 +226,8 @@ function Menu() {
             <button type="button" className="btn btn-line btn-sm" onClick={clear}>{t("menu.clear")}</button>
           </div>
         )}
+        {groups.length < 2 && <FillPhoto file={P.menuSide} alt={pick({ en: "Khali dosas with palya and chutney", kn: "ಪಲ್ಯ ಮತ್ತು ಚಟ್ನಿಯೊಂದಿಗೆ ಖಾಲಿ ದೋಸೆಗಳು" }, lang)} className="menu-side" />}
+        </div>
         <p className="fine center">{t("menu.note")}{has.cost ? " " + t("fact.cost", { cost: S.costForTwo }) + "." : ""}</p>
       </div>
     </section>
@@ -223,11 +237,10 @@ function Menu() {
 /* ---------- story ---------- */
 function Story() {
   const { t } = useSite();
-  const [fail, setFail] = useState(false);
-  const photo = S.photos && S.photos.story && !fail;
+  const has2 = P.story || P.storyExtra;
   return (
     <section className="section story" id="story" aria-labelledby="storyTitle">
-      <div className={"wrap story-grid" + (photo ? " has-photo" : "")}>
+      <div className={"wrap story-grid" + (has2 ? " has-photo" : "")}>
         <div>
           <Reveal><Kicker>{t("story.kicker")}</Kicker><h2 className="h2" id="storyTitle">{t("story.title")}</h2><p className="lead">{t("story.lead")}</p></Reveal>
           <ol className="years">
@@ -241,7 +254,12 @@ function Story() {
           </ol>
           <p className="fine">{t("story.note")}</p>
         </div>
-        {photo && <Reveal delay={0.1}><Photo file={S.photos.story} alt={t("story.photoAlt")} className="story-photo" onFail={() => setFail(true)} /></Reveal>}
+        {has2 && (
+          <div className="fill-col story-side">
+            <FillPhoto file={P.story} alt={t("story.photoAlt")} />
+            <FillPhoto file={P.storyExtra} alt={t("sig.photoAlt")} />
+          </div>
+        )}
       </div>
     </section>
   );
@@ -360,6 +378,7 @@ function Catering() {
           <ol className="process">
             {[1, 2, 3].map((k, i) => <Reveal as="li" key={k} delay={0.08 * i}><span className="process-n" aria-hidden="true">{k}</span><p>{t("cat.p" + k)}</p></Reveal>)}
           </ol>
+          <FillPhoto file={P.catering} alt={t("hero.photoAlt")} className="cat-photo" />
         </div>
         <form ref={form} className="form" onSubmit={submit} noValidate aria-labelledby="formTitle">
           <h3 className="form-h" id="formTitle">{t("cat.form")}</h3>
@@ -485,6 +504,7 @@ function Visit() {
               </dl>
             </div>
             <a className="text-link" href={searchHref(MAIN)} target="_blank" rel="noopener">{t("visit.reviews")}<Icon name="ext" /></a>
+            <FillPhoto file={P.visit} alt={t("story.photoAlt")} caption={t("visit.board")} className="visit-photo" />
           </div>
           <div className="visit-side">
             <MapBox />
@@ -498,13 +518,16 @@ function Visit() {
 
 /* ---------- faq ---------- */
 function Faq() {
-  const { t, time } = useSite();
+  const { t, time, lang } = useSite();
   const items = (t("faq") || []).filter((f) => !f.need || has[f.need]);
   const [open, setOpen] = useState(0);
   return (
     <section className="section faq" id="faq" aria-labelledby="faqTitle">
       <div className="wrap faq-grid">
-        <Reveal><Kicker>{t("faq.kicker")}</Kicker><h2 className="h2" id="faqTitle">{t("faq.title")}</h2></Reveal>
+        <div className="faq-side">
+          <Reveal><Kicker>{t("faq.kicker")}</Kicker><h2 className="h2" id="faqTitle">{t("faq.title")}</h2></Reveal>
+          <FillPhoto file={P.faq} alt={pick({ en: "Folded benne dosa with chutney and white butter", kn: "ಚಟ್ನಿ ಮತ್ತು ಬಿಳಿ ಬೆಣ್ಣೆಯೊಂದಿಗೆ ಮಡಿಸಿದ ಬೆಣ್ಣೆ ದೋಸೆ" }, lang)} className="faq-photo" />
+        </div>
         <div className="faq-list">
           {items.map((f, i) => {
             const isOpen = open === i;

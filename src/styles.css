@@ -34,7 +34,7 @@
   --ok: #1E6B34;
 
   --dk: #123F21;
-  --teal: #035A4F;        /* the exact edge colour of the hotel name board */
+  --teal: #02432B;        /* the exact bottom-edge colour of the hotel name board */
   --teal-soft: #CFE3DA;
   --dk-text: #F6F0DC;
   --dk-soft: #CAD5C3;
@@ -190,13 +190,13 @@ html[lang="kn"] .nav a { letter-spacing: .02em; text-transform: none; font-size:
 /* ---------- hero ---------- */
 .hero { background: var(--teal); color: var(--dk-text); border-top: 0; padding-block: 0 clamp(3.5rem, 2rem + 5vw, 6.5rem); border-bottom: 1px solid var(--dk-rule); }
 .hero-banner { margin: 0 0 clamp(2rem, 1.25rem + 2.6vw, 3.5rem); background: var(--teal); }
-.hero-banner img { display: block; width: 100%; height: auto; aspect-ratio: 2167 / 431; }
+.hero-banner img { display: block; width: 100%; height: auto; aspect-ratio: 2172 / 371; }
 .hero { position: relative; isolation: isolate; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; z-index: -1; background: var(--dk); }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(3px); transform: scale(1.06); transition: opacity .8s ease; }
 .hero-bg img.is-loaded { opacity: 1; }
-.hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(3, 90, 79, .82); }
-[data-theme="dark"] .hero-bg::after { background: rgba(2, 62, 54, .88); }
+.hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(2, 67, 43, .84); }
+[data-theme="dark"] .hero-bg::after { background: rgba(1, 50, 32, .88); }
 .hero-grid { display: grid; gap: clamp(3rem, 6vw, 5rem); align-items: center; }
 .hero h1 { font-size: clamp(2.6rem, 1.5rem + 4.6vw, 5.4rem); line-height: 1.03; max-width: 14ch; color: var(--dk-text); }
 html[lang="kn"] .hero h1 { font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4.2rem); line-height: 1.32; }
@@ -235,15 +235,25 @@ html[lang="kn"] .plate-line { letter-spacing: .06em; font-size: .95rem; }
 .center-head .h2 { margin-inline: auto; }
 .center-head .lead { margin-inline: auto; }
 
+/* photos that fill the empty space beside taller content */
+.fill-col { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.fill-photo { position: relative; width: 100%; aspect-ratio: 4 / 3; }
+.fill-photo img { position: absolute; inset: 0; }
+.fill-cap { font-size: .92rem; color: var(--soft); }
+@media (min-width: 960px) {
+  .fill-col { height: 100%; }
+  .fill-col > .fill-photo, .fill-col > .fill-col { flex: 1 1 0; min-height: 220px; aspect-ratio: auto; }
+}
+
 /* craft */
 .craft-grid { display: grid; gap: clamp(2.5rem, 6vw, 5rem); }
-.craft-photo { aspect-ratio: 4 / 5; margin-top: 2.5rem; }
+.craft-list { margin-top: 2.25rem; }
 .craft-list li { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1rem; padding: 1.6rem 0; border-top: 1px solid var(--rule); }
 .craft-list li:last-child { border-bottom: 1px solid var(--rule); }
 .craft-n { font-family: var(--f-head); font-style: italic; font-size: 2.2rem; line-height: 1.1; color: var(--kicker); }
 .craft-list h3 { font-family: var(--f-head); font-size: 1.45rem; font-weight: 600; line-height: 1.25; }
 .craft-list p { margin-top: .35rem; color: var(--soft); }
-@media (min-width: 960px) { .craft-grid { grid-template-columns: .9fr 1.1fr; align-items: start; } .craft-head { position: sticky; top: calc(var(--hdr) + 32px); } }
+@media (min-width: 960px) { .craft-grid.has-photo { grid-template-columns: 1.1fr .9fr; align-items: stretch; } }
 
 /* menu */
 .menu { background: var(--bg); border-top: 1px solid var(--rule); }
@@ -260,7 +270,11 @@ html[lang="kn"] .tab { letter-spacing: .02em; text-transform: none; font-size: .
 .tab[aria-pressed="true"] { color: var(--text); box-shadow: inset 0 -2px 0 var(--yellow); }
 .board { position: relative; padding: clamp(1.75rem, 4vw, 3.5rem); background: var(--paper); border: 1px solid var(--rule); outline: 1px solid var(--rule); outline-offset: -9px; }
 .board-2 { display: grid; gap: 2.5rem; }
-.board-1 { max-width: 880px; margin: 2.75rem auto 0; }
+.board-1 { margin-top: 0; }
+.menu-layout { margin-top: 2.75rem; display: grid; gap: 2rem; }
+.menu-side { display: none; }
+@media (min-width: 960px) { .menu-layout.has-side { grid-template-columns: 1.45fr .55fr; align-items: stretch; } .menu-side { display: flex; } }
+.menu-layout:not(.has-side) .board-1 { max-width: 880px; margin-inline: auto; width: 100%; }
 @media (min-width: 900px) { .board-2 { grid-template-columns: 1fr 1fr; gap: 0; } .board-2 .board-col:first-child { padding-right: 3rem; border-right: 1px solid var(--rule); } .board-2 .board-col:last-child { padding-left: 3rem; } }
 .board-h { margin-bottom: 1.25rem; font-family: var(--f-head); font-style: italic; font-weight: 500; font-size: 1.6rem; color: var(--kicker); text-align: center; }
 html[lang="kn"] .board-h { font-style: normal; }
@@ -351,7 +365,8 @@ html[lang="kn"] .field label { text-transform: none; letter-spacing: 0; font-siz
 .alert-err { background: color-mix(in srgb, var(--err) 10%, var(--paper)); color: var(--err); border: 1px solid var(--err); }
 .alert-ok { background: color-mix(in srgb, var(--ok) 12%, var(--paper)); color: var(--ok); border: 1px solid var(--ok); }
 .alert:focus { outline: none; }
-@media (min-width: 960px) { .cat-grid { grid-template-columns: 1fr 1fr; } }
+.cat-photo { margin-top: 2rem; }
+@media (min-width: 960px) { .cat-grid { grid-template-columns: 1fr 1fr; align-items: stretch; } .cat-copy { display: flex; flex-direction: column; } .cat-copy .cat-photo { flex: 1 1 0; height: auto; } }
 
 .modal { width: min(92vw, 540px); padding: 0; border: 1px solid var(--rule); background: var(--paper); color: var(--text); }
 .modal::backdrop { background: rgba(10, 16, 12, .7); }
@@ -384,7 +399,8 @@ html[lang="kn"] .field label { text-transform: none; letter-spacing: 0; font-siz
 .qr-row .muted { margin: .25rem 0 .6rem; }
 .qr { position: relative; width: 108px; height: 108px; padding: 8px; background: #F6F0DC; border: 1px solid var(--rule); }
 .qr span, .qr svg { display: block; width: 100%; height: 100%; }
-@media (min-width: 960px) { .visit-grid { grid-template-columns: 1fr 1.15fr; gap: 4rem; } }
+.visit-photo .fill-cap { margin-top: -.25rem; }
+@media (min-width: 960px) { .visit-grid { grid-template-columns: 1fr 1.15fr; gap: 4rem; align-items: stretch; } .visit-info { display: flex; flex-direction: column; } .visit-info .visit-photo { flex: 1 1 0; height: auto; } }
 
 /* faq */
 .faq { background: var(--bg-alt); border-top: 1px solid var(--rule); }
@@ -397,7 +413,8 @@ html[lang="kn"] .field label { text-transform: none; letter-spacing: 0; font-siz
 .qa.is-open .qa-ico { transform: rotate(45deg); }
 .qa-a { overflow: hidden; }
 .qa-a p { padding: 0 2.5rem 1.4rem 0; color: var(--soft); }
-@media (min-width: 960px) { .faq-grid { grid-template-columns: .8fr 1.2fr; gap: 4rem; } }
+.faq-photo { margin-top: 2rem; }
+@media (min-width: 960px) { .faq-grid { grid-template-columns: .8fr 1.2fr; gap: 4rem; align-items: stretch; } .faq-side { display: flex; flex-direction: column; } .faq-side .faq-photo { flex: 1 1 0; height: auto; } }
 
 /* footer */
 .ftr { background: var(--dk); color: var(--dk-text); padding-top: clamp(3.5rem, 7vw, 5rem); }
