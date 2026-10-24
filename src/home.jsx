@@ -39,15 +39,26 @@ function Hero() {
           <img src={photoSrc(bgFile)} alt="" decoding="async" fetchpriority="high" className={bg === "loaded" ? "is-loaded" : ""} onLoad={() => setBg("loaded")} onError={() => setBg("failed")} />
         </div>
       )}
+      <div className="wrap">
+        <m.figure className="hero-banner" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease }}>
+          <img
+            src="assets/brand/banner-1200.webp"
+            srcSet="assets/brand/banner-720.webp 720w, assets/brand/banner-1200.webp 1200w, assets/brand/banner.webp 2172w"
+            sizes="(min-width: 1240px) 1192px, calc(100vw - 2 * var(--gutter))"
+            width="2172" height="436" fetchpriority="high" decoding="async"
+            alt={t("banner.alt")}
+          />
+        </m.figure>
+      </div>
       <div className="wrap hero-grid">
         <div className="hero-copy">
-          <m.p className="kicker" {...rise(0)}>{t("hero.kicker")}</m.p>
+          <m.p className="kicker kicker-light" {...rise(0)}>{t("hero.kicker")}</m.p>
           <m.h1 id="heroTitle" {...rise(1)}>{t("hero.title")}</m.h1>
           <m.p className="hero-text" {...rise(2)}>{t("hero.text")}</m.p>
           <m.div className="cta-row" {...rise(3)}>
             <a className="btn btn-gold btn-lg" href="#menu">{t("hero.menu")}</a>
-            {has.whatsapp && <a className="btn btn-primary btn-lg" href={waHref(t("wa.order"))} target="_blank" rel="noopener"><Icon name="chat" />{t("hero.whatsapp")}</a>}
-            <a className="btn btn-line btn-lg" href={dirHref(MAIN)} target="_blank" rel="noopener"><Icon name="pin" />{t("hero.directions")}</a>
+            {has.whatsapp && <a className="btn btn-light btn-lg" href={waHref(t("wa.order"))} target="_blank" rel="noopener"><Icon name="chat" />{t("hero.whatsapp")}</a>}
+            <a className="btn btn-light btn-lg" href={dirHref(MAIN)} target="_blank" rel="noopener"><Icon name="pin" />{t("hero.directions")}</a>
           </m.div>
         </div>
         <m.div className="hero-art" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, ease, delay: 0.15 }}>

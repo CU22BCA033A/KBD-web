@@ -39,25 +39,6 @@ function ThemeSwitch() {
   );
 }
 
-/* The hotel's name board, rebuilt from the banner artwork so it stays sharp and fits phones. */
-function Banner() {
-  const { t } = useSite();
-  return (
-    <section className="banner" aria-label={t("banner.label")}>
-      <div className="banner-in">
-        <img className="deity" src="assets/brand/deity-left.webp" alt="Sri Guru Kottureshwara" width="279" height="389" decoding="async" />
-        <div className="banner-text">
-          <p className="banner-top" lang="kn">॥ ಶ್ರೀ ಗುರು ಕೊಟ್ಟೂರೇಶ್ವರ ಪ್ರಸನ್ನ ॥</p>
-          <p className="banner-kn" lang="kn">ಶ್ರೀ ಗುರು ಕೊಟ್ಟೂರೇಶ್ವರ ಬೆಣ್ಣೆ ದೋಸೆ ಹೋಟೆಲ್</p>
-          <p className="banner-place" lang="kn">(ದಾವಣಗೆರೆ)</p>
-          <p className="banner-en" lang="en"><img className="banner-plate" src="assets/brand/plate.webp" alt="" width="152" height="73" />Sri Guru Kottureshwara Butter Dosa Hotel</p>
-        </div>
-        <img className="deity" src="assets/brand/deity-right.webp" alt="Temple deity decorated with flowers" width="269" height="389" decoding="async" />
-      </div>
-    </section>
-  );
-}
-
 function Header({ page }) {
   const { t } = useSite();
   const [open, setOpen] = useState(false);
@@ -286,7 +267,6 @@ export function Layout({ page, children }) {
   return (
     <>
       <a className="skip" href="#main">{t("skip")}</a>
-      <Banner />
       <Header page={page} />
       <main id="main" tabIndex={-1}>{children}</main>
       <Footer page={page} />

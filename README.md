@@ -65,9 +65,9 @@ after building without touching the code.
 - [ ] Domain connected, `siteUrl`, sitemap and robots updated
 
 ## Design notes
-- The top name board recreates the hotel's banner in code (teal sunburst, framed deity photos,
-  Kannada and English lettering) so it stays sharp and fits phones. The Kannada spelling on the
-  banner artwork had slips, which are corrected here.
+- The home page opens with the hotel's own name board banner, shown exactly as it is
+  (`public/assets/brand/banner*.webp`). The hero around it uses the banner's teal so the two blend.
+  To use a new banner, replace those three files (2172, 1200 and 720 pixels wide).
 - The rest of the site follows a heritage hotel style: cream paper, banana-leaf green, sharp edges,
   hairline rules, no shadows or gradients, colour-only hover, short animations that switch off for
   visitors who prefer reduced motion, skeleton loaders while photos and the map load.
@@ -75,6 +75,6 @@ after building without touching the code.
 - No tracking or analytics. The Google map loads only after the visitor allows it.
 
 ## Licences
-Fonts (Playfair Display, Karla, Noto Serif/Sans Kannada, Baloo Tamma 2, Comic Neue): SIL Open Font License.
+Fonts (Playfair Display, Karla, Noto Serif/Sans Kannada): SIL Open Font License.
 React, Framer Motion, Vite: MIT. QR code library: MIT (Kazuhiko Arase).
 Logo, banner and photos belong to the hotel.

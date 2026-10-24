@@ -12,10 +12,6 @@
 @font-face { font-family: "Noto Serif Kannada"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(./fonts/noto-serif-kannada-kannada-wght-normal.woff2) format("woff2"); unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+1CD0, U+1CD2-1CD3, U+1CDA, U+1CF2, U+1CF4, U+200C-200D, U+20B9, U+25CC, U+A830-A835; }
 @font-face { font-family: "Noto Sans Kannada"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(./fonts/noto-sans-kannada-kannada-wght-normal.woff2) format("woff2"); unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+1CD0, U+1CD2-1CD3, U+1CDA, U+1CF2, U+1CF4, U+200C-200D, U+20B9, U+25CC, U+A830-A835; }
 
-/* Banner-only fonts, chosen to match the hotel's name board lettering (SIL Open Font License) */
-@font-face { font-family: "Baloo Tamma 2"; font-style: normal; font-weight: 800; font-display: swap; src: url(./fonts/baloo-tamma-2-kannada-800-normal.woff2) format("woff2"); unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+1CD0, U+1CD2-1CD3, U+1CDA, U+1CF2, U+1CF4, U+200C-200D, U+20B9, U+25CC, U+A830-A835; }
-@font-face { font-family: "Comic Neue"; font-style: italic; font-weight: 700; font-display: swap; src: url(./fonts/comic-neue-latin-700-italic.woff2) format("woff2"); unicode-range: U+0000-00FF; }
-
 :root {
   --green: #1E6B34;
   --green-hover: #175A2B;
@@ -38,6 +34,8 @@
   --ok: #1E6B34;
 
   --dk: #123F21;
+  --teal: #035548;        /* taken from the hotel name board */
+  --teal-soft: #CFE3DA;
   --dk-text: #F6F0DC;
   --dk-soft: #CAD5C3;
   --dk-rule: rgba(246, 240, 220, .22);
@@ -81,7 +79,7 @@ a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness:
 button, input, textarea { font: inherit; color: inherit; border-radius: 0; }
 button { cursor: pointer; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.banner :focus-visible, .catering :focus-visible, .ftr :focus-visible, .topbar :focus-visible, .pitch :focus-visible { outline-color: var(--yellow); }
+.hero :focus-visible, .catering :focus-visible, .ftr :focus-visible, .topbar :focus-visible, .pitch :focus-visible { outline-color: var(--yellow); }
 main:focus { outline: none; }
 ::selection { background: var(--yellow); color: var(--ink); }
 .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
@@ -140,24 +138,6 @@ html[lang="kn"] .btn { text-transform: none; letter-spacing: .02em; font-size: .
 .photo img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s ease; }
 .photo.is-loaded img { opacity: 1; }
 
-/* ---------- name board banner (recreates the hotel's banner artwork) ---------- */
-.banner { position: relative; overflow: hidden; color: #fff;
-  background:
-    repeating-conic-gradient(from 0deg at 50% 46%, rgba(255,255,255,.075) 0deg 3.5deg, rgba(255,255,255,0) 3.5deg 11deg),
-    radial-gradient(ellipse 70% 120% at 50% 46%, #18a38f 0%, #0e8172 34%, #09604f 72%, #064a3d 100%);
-  border-block: 3px solid #053b31; }
-.banner::after { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(255, 255, 255, .28); pointer-events: none; }
-.banner-in { position: relative; z-index: 1; max-width: 1480px; margin-inline: auto; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.5rem, 2vw, 2.25rem); padding: clamp(10px, 1.4vw, 20px) clamp(10px, 2vw, 30px); }
-.deity { width: clamp(58px, 13.5vw, 205px); height: auto; aspect-ratio: 279 / 389; object-fit: cover; border-radius: 50%; border: clamp(2px, .32vw, 5px) solid #E9C35B; box-shadow: 0 0 0 clamp(1px, .12vw, 2px) #6E4F0F, 0 4px 14px rgba(0, 0, 0, .35); background: #0b6a5a; }
-.banner-text { text-align: center; min-width: 0; }
-.banner-top { font-family: "Noto Sans Kannada", sans-serif; font-weight: 600; font-size: clamp(.58rem, .35rem + .7vw, 1.05rem); color: #F8F3E1; letter-spacing: .02em; }
-.banner-kn { margin-top: .05em; font-family: "Baloo Tamma 2", "Noto Sans Kannada", sans-serif; font-weight: 800; font-size: clamp(1.15rem, .3rem + 3.25vw, 3.5rem); line-height: 1.25; color: #FBE7A1; -webkit-text-stroke: clamp(.4px, .07vw, 1.4px) #3B2A10; paint-order: stroke fill; text-shadow: 0 .05em 0 #6B4A12, 0 .09em .16em rgba(0, 0, 0, .5); text-wrap: balance; }
-.banner-place { margin: -.1em 3% 0 0; text-align: right; font-family: "Noto Sans Kannada", sans-serif; font-weight: 600; font-size: clamp(.58rem, .35rem + .7vw, 1.1rem); color: #fff; }
-.banner-en { display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .1em .4em; margin-top: .05em; font-family: "Comic Neue", "Karla", sans-serif; font-weight: 700; font-style: italic; font-size: clamp(1.05rem, .3rem + 3vw, 3.2rem); line-height: 1.12; letter-spacing: -.015em; -webkit-text-stroke: .035em #fff; color: #fff; text-shadow: 0 .05em 0 #24302B, 0 .08em .2em rgba(0, 0, 0, .55); text-wrap: balance; }
-.banner-plate { width: 2.1em; height: auto; flex: none; }
-@media (max-width: 599px) { .banner-plate { display: none; } .banner-place { text-align: center; margin-right: 0; } }
-@media (min-width: 900px) { .banner-kn, .banner-en { white-space: nowrap; flex-wrap: nowrap; } .banner-in { padding-inline: 14px; } .banner-kn { font-size: min(3.5rem, 3.05vw); } .banner-en { font-size: min(3.5rem, 3.25vw); } }
-
 /* ---------- top bar ---------- */
 .topbar { background: var(--dk); color: var(--dk-text); font-size: .86rem; }
 .topbar-in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 40px; }
@@ -208,7 +188,10 @@ html[lang="kn"] .nav a { letter-spacing: .02em; text-transform: none; font-size:
 @media (max-width: 400px) { .brand-mark { width: 38px; height: 38px; } .brand-name { font-size: .98rem; } .brand-sub { font-size: .58rem; letter-spacing: .1em; } }
 
 /* ---------- hero ---------- */
-.hero { background: var(--bg-alt); color: var(--text); padding-block: clamp(3.5rem, 2rem + 6vw, 7rem); border-bottom: 1px solid var(--rule); }
+.hero { background: var(--teal); color: var(--dk-text); padding-block: clamp(14px, 2vw, 28px) clamp(3.5rem, 2rem + 5vw, 6.5rem); border-bottom: 1px solid var(--dk-rule); }
+.hero-banner { margin: 0 0 clamp(2rem, 1.25rem + 2.6vw, 3.5rem); }
+.hero-banner img { display: block; width: 100%; height: auto; aspect-ratio: 2172 / 436; border: 1px solid rgba(246, 240, 220, .25); background: #015A4B; }
+@media (max-width: 599px) { .hero-banner { margin-inline: calc(-1 * var(--gutter) + 6px); } }
 .hero { position: relative; isolation: isolate; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; z-index: -1; background: var(--dk); }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(3px); transform: scale(1.06); transition: opacity .8s ease; }
@@ -216,19 +199,18 @@ html[lang="kn"] .nav a { letter-spacing: .02em; text-transform: none; font-size:
 .hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(13, 46, 24, .8); }
 [data-theme="dark"] .hero-bg::after { background: rgba(8, 30, 15, .9); }
 .hero-grid { display: grid; gap: clamp(3rem, 6vw, 5rem); align-items: center; }
-.hero h1 { font-size: clamp(2.6rem, 1.5rem + 4.6vw, 5.4rem); line-height: 1.03; max-width: 14ch; color: var(--text); }
+.hero h1 { font-size: clamp(2.6rem, 1.5rem + 4.6vw, 5.4rem); line-height: 1.03; max-width: 14ch; color: var(--dk-text); }
 html[lang="kn"] .hero h1 { font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4.2rem); line-height: 1.32; }
-.hero-text { margin-top: 1.6rem; font-size: clamp(1.08rem, 1rem + .4vw, 1.3rem); color: var(--soft); max-width: 50ch; }
+.hero-text { margin-top: 1.6rem; font-size: clamp(1.08rem, 1rem + .4vw, 1.3rem); color: var(--teal-soft); max-width: 50ch; }
 .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.25rem; }
 .hero-art { display: flex; justify-content: center; }
-.arch { position: relative; width: min(100%, 420px); aspect-ratio: 4 / 5; border: 1px solid var(--rule); border-radius: 999px 999px 0 0; padding: 14px; }
+.arch { position: relative; width: min(100%, 420px); aspect-ratio: 4 / 5; border: 1px solid var(--dk-rule); border-radius: 999px 999px 0 0; padding: 14px; }
 .arch::before { content: ""; position: absolute; inset: 14px; border: 1px solid var(--yellow); border-radius: 999px 999px 0 0; pointer-events: none; z-index: 1; }
 .arch-photo { position: absolute; inset: 14px; border-radius: 999px 999px 0 0; }
 .plate { position: absolute; inset: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2rem; text-align: center; border-radius: 999px 999px 0 0; }
-.plate-leaf { width: 110px; height: 55px; color: var(--kicker); }
-.plate-kn { font-family: "Noto Serif Kannada", serif; font-weight: 700; font-size: clamp(3rem, 2rem + 4vw, 4.8rem); line-height: 1.2; color: var(--green); }
-[data-theme="dark"] .plate-kn { color: var(--text); }
-.plate-line { font-size: .8rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--kicker); padding-top: .6rem; border-top: 1px solid var(--rule); }
+.plate-leaf { width: 110px; height: 55px; color: var(--yellow); }
+.plate-kn { font-family: "Noto Serif Kannada", serif; font-weight: 700; font-size: clamp(3rem, 2rem + 4vw, 4.8rem); line-height: 1.2; color: var(--dk-text); }
+.plate-line { font-size: .8rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--yellow); padding-top: .6rem; border-top: 1px solid var(--dk-rule); }
 html[lang="kn"] .plate-line { letter-spacing: .06em; font-size: .95rem; }
 @media (max-width: 899px) { .arch { width: min(78vw, 340px); } }
 @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.15fr .85fr; } }
