@@ -1,7 +1,7 @@
 import { useSite } from "./context.jsx";
 import { S, MAIN, pick } from "./lib.js";
 import { contactLinks } from "./layout.jsx";
-import { Kicker, Ornament, Reveal } from "./ui.jsx";
+import { Ornament } from "./ui.jsx";
 
 function Contact() {
   const { t, lang } = useSite();
@@ -149,7 +149,7 @@ export function Legal({ kind }) {
   return (
     <article className="legal">
       <div className="wrap legal-in">
-        <Kicker><a href="index.html" className="crumb">{S.shortName || S.name}</a></Kicker>
+        <a href="index.html" className="crumb">{S.shortName || S.name}</a>
         <h1 className="h2">{title}</h1>
         <p className="updated">Last updated: <time dateTime={raw}>{when}</time></p>
         <Ornament className="left" />
@@ -162,7 +162,7 @@ export function Legal({ kind }) {
 export function NotFound() {
   return (
     <section className="nf">
-      <Reveal className="wrap nf-in">
+      <div className="wrap nf-in">
         <p className="nf-code" aria-hidden="true">404</p>
         <h1 className="h2">This page is not on the menu.</h1>
         <Ornament />
@@ -171,7 +171,7 @@ export function NotFound() {
           <a className="btn btn-primary btn-lg" href="index.html">Go to the home page</a>
           <a className="btn btn-line btn-lg" href="index.html#menu">See the menu</a>
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

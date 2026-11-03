@@ -78,16 +78,15 @@ after building without touching the code.
 - [ ] Domain connected, `siteUrl`, sitemap and robots updated
 
 ## Design notes
-- The home page opens with the hotel's own name board banner, shown exactly as it is
-  (`public/assets/brand/banner*.webp`). The hero around it uses the banner's teal so the two blend.
-  To use a new banner, replace those three files (2172, 1200 and 720 pixels wide).
-- The rest of the site follows a heritage hotel style: cream paper, banana-leaf green, sharp edges,
-  hairline rules, no shadows or gradients, colour-only hover, short animations that switch off for
-  visitors who prefer reduced motion, skeleton loaders while photos and the map load.
+- The design is recorded in `DESIGN.md` (colours, type, components) and the product brief in `PRODUCT.md`.
+  Read both before changing the look.
+- Style: the hotel's painted counter board. Bottle green from the name board, chalk and turmeric lettering,
+  steel-grey working sections, a turmeric catering notice. Square corners, painted frames, no shadows.
+- The name board banner (`public/assets/brand/banner*.webp`) is shown exactly as it is, full width.
 - Pages: home, privacy, terms, refund and cancellation, cookies, and a custom 404.
 - No tracking or analytics. The Google map loads only after the visitor allows it.
 
 ## Licences
-Fonts (Playfair Display, Karla, Noto Serif/Sans Kannada): SIL Open Font License.
+Fonts (Teko, Baloo Tamma 2, Hind, Noto Sans Kannada): SIL Open Font License.
 React, Framer Motion, Vite: MIT. QR code library: MIT (Kazuhiko Arase).
 Logo, banner and photos belong to the hotel.
