@@ -66,15 +66,6 @@ function Hero() {
   const other = lang === "en" ? "kn" : "en";
   return (
     <section className="hero" id="top" aria-labelledby="heroTitle">
-      <figure className="hero-banner">
-        <img
-          src="assets/brand/banner-1600.webp"
-          srcSet="assets/brand/banner-720.webp 720w, assets/brand/banner-1200.webp 1200w, assets/brand/banner-1600.webp 1600w, assets/brand/banner.webp 2172w"
-          sizes="100vw"
-          width="2172" height="371" fetchpriority="high" decoding="async"
-          alt={t("banner.alt")}
-        />
-      </figure>
       <div className="hero-stage">
         {bgFile && bg !== "failed" && (
           <div className="hero-bg" aria-hidden="true">

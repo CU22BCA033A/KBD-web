@@ -41,7 +41,7 @@ A Davangere hotel serving the city's own dish, benne dosa, cooked on a wood-fire
 
 ## Brand Commitments
 - Name: "Sri Guru Kottureshwara Butter Dosa Hotel" (matches the name board).
-- The name board banner (`public/assets/brand/banner*.webp`) must be shown exactly as it is, full width, with the page colour blending into it.
+- The name board banner was removed from the site at the owner's request (files kept in `public/assets/brand/`). The page green still matches it.
 - Logo: `public/assets/logo.webp`, used in header, favicon and share image.
 - Photos must be shown whole, never cropped, except the round hero frame and square menu thumbnails, which the user approved.
 - User's standing design bans: no harsh gradients, pure white backgrounds, rainbow colours, drop shadows everywhere, three-cards-in-a-row, emoji, liquid glass, em dashes, Inter/Geist/Space Grotesk, coloured accent stripes, fake testimonials or metrics, bento grids, terminal windows, "it's not X, it's Y" copy, checkmark bullets, pricing tiers, soft rounded UI, purple and black, radial orbs, dot grids, sparkle icons, animated arrows, hover animation on everything, neon or basic pastel colours, cursor animation. Must have skeleton loaders, terms and privacy pages.

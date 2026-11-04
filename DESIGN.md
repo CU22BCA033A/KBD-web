@@ -1,7 +1,7 @@
 # Design: the tiffin-room counter board
 
-The site is the hotel's painted counter board. It runs straight out of the hotel's own name board
-(shown as-is at the top of the home page), in the same bottle green, with chalk and turmeric
+The site is the hotel's painted counter board. It uses the hotel's name board colours
+(the board itself is no longer shown on the site): the same bottle green, with chalk and turmeric
 lettering. Working sections (how it's made, visit, policy pages) sit on a brushed-steel counter;
 catering is a turmeric painted notice.
 

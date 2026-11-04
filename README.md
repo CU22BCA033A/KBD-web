@@ -82,7 +82,7 @@ after building without touching the code.
   Read both before changing the look.
 - Style: the hotel's painted counter board. Bottle green from the name board, chalk and turmeric lettering,
   steel-grey working sections, a turmeric catering notice. Square corners, painted frames, no shadows.
-- The name board banner (`public/assets/brand/banner*.webp`) is shown exactly as it is, full width.
+- The name board banner was removed from the page; its files remain in `public/assets/brand/` and the share image.
 - Pages: home, privacy, terms, refund and cancellation, cookies, and a custom 404.
 - No tracking or analytics. The Google map loads only after the visitor allows it.
 
