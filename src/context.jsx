@@ -1,5 +1,14 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { flushSync } from "react-dom";
 import { translate, store, makeTime } from "./lib.js";
+
+/* Cross-fade the whole page when the language or theme changes (View Transitions), if the browser supports it
+   and the visitor has not asked for reduced motion. Otherwise the change is instant. */
+function withFade(update) {
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!document.startViewTransition || reduce) { update(); return; }
+  document.startViewTransition(() => flushSync(update));
+}
 
 const Ctx = createContext(null);
 
@@ -25,8 +34,8 @@ export function SiteProvider({ children }) {
 
   const value = {
     lang, t, time,
-    setLang: (l) => { setLangState(l); store("sgk-lang", l); },
-    theme, toggleTheme: () => setThemeState((th) => { const n = th === "dark" ? "light" : "dark"; store("sgk-theme", n); return n; }),
+    setLang: (l) => withFade(() => { setLangState(l); store("sgk-lang", l); }),
+    theme, toggleTheme: () => withFade(() => setThemeState((th) => { const n = th === "dark" ? "light" : "dark"; store("sgk-theme", n); return n; })),
     consent, cookieOpen, setCookieOpen,
     setConsent: (v) => { store("sgk-consent", v); setConsentState(v); setCookieOpen(false); }
   };

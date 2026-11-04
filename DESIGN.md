@@ -37,9 +37,19 @@ Dark theme redefines only the steel tokens (the board is already dark). All text
 - **Today strip**: open-now status, hours, address, directions, copy.
 
 ## Motion
-- One authored moment: the menu board paints in top-down (clip-path wipe) on first view; skipped under reduced motion.
+- Focal moment, on load: the hero headline is sign-painted left to right (clip-path wipe), the other-language line
+  follows, then the text and buttons settle; the plate photo is set down onto the counter with a slight turn.
+- Menu: the board paints in top-down on first view, then the dish lines are written onto it one by one.
 - Signature interaction: the dish line under the pointer or focus lights up (board-lift ground, turmeric name).
+- Feedback: buttons press in 1px when tapped; language and theme switches cross-fade (View Transitions).
+- The "Open now" dot pulses three times, then stops.
 - Skeleton pulse while photos, map and QR load.
+- Reduced motion: every movement becomes a short fade; no wipes, slides or presses.
+
+## Type tuning
+- `font-synthesis: none` (no faked bold or italic, important for Kannada).
+- Light text on the green gets slightly more line height (1.68) and tracking; steel sections use 1.6.
+- `text-wrap: balance` on headings, `pretty` on paragraphs; tabular numbers for prices, hours and steps.
 
 ## Photos
 Shown whole, uncropped. Exceptions approved by the owner: round hero plate, square menu thumbnails, blurred hero background.

@@ -56,8 +56,18 @@ function BoardTitle({ id, k, as = "h2", className = "" }) {
 }
 
 /* ---------- hero ---------- */
+/* Hero entrance: the headline is sign-painted left to right, line by line, and the plate is set down on the counter.
+   Reduced motion gets a plain fade. Runs once, on load. */
+const paintIn = (reduce, delay) => reduce
+  ? { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0.3, delay } }
+  : { initial: { clipPath: "inset(-10% 100% -10% 0)" }, animate: { clipPath: "inset(-10% 0% -10% 0)" }, transition: { duration: 0.75, ease, delay } };
+const settle = (reduce, delay) => reduce
+  ? { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0.3, delay } }
+  : { initial: { opacity: 0, y: 10 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5, ease, delay } };
+
 function Hero() {
   const { t, time, lang } = useSite();
+  const reduce = useReducedMotion();
   const [heroFail, setHeroFail] = useState(false);
   const [bg, setBg] = useState("loading");
   const hasPhoto = !!P.hero && !heroFail;
@@ -75,25 +85,28 @@ function Hero() {
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <h1 id="heroTitle">
-              <span className="h1-main">{t("hero.title")}</span>
-              <span className="h1-other" lang={other}>{translate(other, "hero.title")}</span>
+              <m.span className="h1-main" key={"m" + lang} {...paintIn(reduce, 0.1)}>{t("hero.title")}</m.span>
+              <m.span className="h1-other" lang={other} key={"o" + lang} {...paintIn(reduce, 0.55)}>{translate(other, "hero.title")}</m.span>
             </h1>
-            <p className="hero-text">{t("hero.text")}</p>
-            <div className="cta-row">
+            <m.p className="hero-text" {...settle(reduce, 0.85)}>{t("hero.text")}</m.p>
+            <m.div className="cta-row" {...settle(reduce, 0.95)}>
               {has.whatsapp
                 ? <a className="btn btn-gold btn-lg" href={waHref(t("wa.order"))} target="_blank" rel="noopener"><Icon name="chat" />{t("hero.whatsapp")}</a>
                 : <a className="btn btn-gold btn-lg" href="#menu">{t("hero.menu")}</a>}
               <a className="btn btn-chalk btn-lg" href="#catering">{t("band.caterLink")}</a>
-            </div>
+            </m.div>
           </div>
           <div className="hero-art">
-            <div className="plate-rim">
+            <m.div className="plate-rim"
+              initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.9, rotate: -14, y: 24 }}
+              animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1, rotate: 0, y: 0 }}
+              transition={reduce ? { duration: 0.3 } : { duration: 0.9, ease, delay: 0.2 }}>
               {hasPhoto ? (
                 <Photo file={P.hero} alt={altFor(P.hero, lang, t("hero.photoAlt"))} className="plate-photo" eager onFail={() => setHeroFail(true)} />
               ) : (
                 <div className="plate-empty" aria-hidden="true"><span lang="kn">ಬೆಣ್ಣೆ<br />ದೋಸೆ</span></div>
               )}
-            </div>
+            </m.div>
           </div>
         </div>
       </div>
@@ -114,6 +127,8 @@ function Hero() {
 }
 
 /* ---------- menu: the counter board ---------- */
+/* After the board paints in, the dish lines are written onto it one by one. */
+const dishIn = { hide: { opacity: 0, x: -14 }, show: { opacity: 1, x: 0, transition: { duration: 0.45, ease } } };
 function Dish({ d }) {
   const { t, lang } = useSite();
   const [noPhoto, setNoPhoto] = useState(false);
@@ -121,7 +136,7 @@ function Dish({ d }) {
   const other = lang === "en" ? d.name.kn : d.name.en;
   const priced = typeof d.price === "number";
   return (
-    <li className={"dish" + (d.photo && !noPhoto ? " has-photo" : "")}>
+    <m.li variants={dishIn} className={"dish" + (d.photo && !noPhoto ? " has-photo" : "")}>
       {d.photo && !noPhoto && <Photo file={d.photo} alt={name} className="dish-photo" onFail={() => setNoPhoto(true)} />}
       <div className="dish-body">
         <div className="dish-top">
@@ -137,7 +152,7 @@ function Dish({ d }) {
         </p>
       </div>
       {has.whatsapp && <a className="dish-order" href={waHref(t("menu.orderMsg", { name }))} target="_blank" rel="noopener" aria-label={t("menu.orderLabel", { name })}><Icon name="chat" /><span>{t("menu.order")}</span></a>}
-    </li>
+    </m.li>
   );
 }
 
@@ -169,7 +184,10 @@ function Menu() {
           )}
           <p className="visually-hidden" aria-live="polite">{t("menu.count", { n: shown.length })}</p>
           {shown.length ? (
-            <ul className="dishes">{shown.map((d) => <Dish key={d.id} d={d} />)}</ul>
+            <m.ul className="dishes" initial={reduce ? false : "hide"} whileInView="show" viewport={{ once: true, margin: "0px 0px -15% 0px" }}
+              variants={{ show: { transition: { delayChildren: 0.45, staggerChildren: 0.12 } } }}>
+              {shown.map((d) => <Dish key={d.id} d={d} />)}
+            </m.ul>
           ) : (
             <div className="menu-empty">
               <p>{t("menu.none", { q })}</p>
